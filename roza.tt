@@ -1,0 +1,160 @@
+#ac {{Sa|Jest} tutaj %2 widoczn{ych|e} wyjsc{ia|ie|}: %5.}
+{
+  #var roz %5;
+  #replace {roz} {{, | i }} {;};
+  #list roza create {$roz};
+  #var rozb {{w}{  }{e}{  }{n}{   }{s}{   }{nw}{  }{ne}{  }{se}{  }{sw}{  }};
+  #foreach {$roza[]} {i}
+  {
+    #switch {"$roza[$i]"}
+    {
+      #case {"polnoc"} {#var {rozb[n]} { | }};
+      #case {"polnocny-wschod"} {#var {rozb[ne]} {/ }};
+      #case {"polnocny-zachod"} {#var {rozb[nw]} { \\}};
+      #case {"poludnie"} {#var {rozb[s]} { | }};
+      #case {"poludniowy-wschod"} {#var {rozb[se]} {\\ }};
+      #case {"poludniowy-zachod"} {#var {rozb[sw]} { /}};
+      #case {"wschod"} {#var {rozb[e]} {--}};
+      #case {"zachod"} {#var {rozb[w]} {--}};
+    };
+  };
+  #if {$toggle_roza==1}
+  {
+    #var you {[ ]};
+    #echo {$rozb[nw]$rozb[n]$rozb[ne]};
+    #echo {$rozb[w]$you$rozb[e]};
+    #echo {$rozb[sw]$rozb[s]$rozb[se]};
+  };
+}
+
+#ac {Sciezka prowadzi tutaj w %3 kierunkach: %5.}
+{
+  #var roz %5;
+  #replace {roz} {{, | i }} {;};
+  #list roza create {$roz};
+  #var rozb {{w}{  }{e}{  }{n}{   }{s}{   }{nw}{  }{ne}{  }{se}{  }{sw}{  }};
+  #foreach {$roza[]} {i}
+  {
+    #switch {"$roza[$i]"}
+    {
+      #case {"polnoc"} {#var {rozb[n]} { | }};
+      #case {"polnocny-wschod"} {#var {rozb[ne]} {/ }};
+      #case {"polnocny-zachod"} {#var {rozb[nw]} { \\}};
+      #case {"poludnie"} {#var {rozb[s]} { | }};
+      #case {"poludniowy-wschod"} {#var {rozb[se]} {\\ }};
+      #case {"poludniowy-zachod"} {#var {rozb[sw]} { /}};
+      #case {"wschod"} {#var {rozb[e]} {--}};
+      #case {"zachod"} {#var {rozb[w]} {--}};
+    };
+  };
+  #if {$toggle_roza==1}
+  {
+    #var you {[ ]};
+    #echo {$rozb[nw]$rozb[n]$rozb[ne]};
+    #echo {$rozb[w]$you$rozb[e]};
+    #echo {$rozb[sw]$rozb[s]$rozb[se]};
+  };
+}
+
+#ac { mozesz kontynuowac udajac sie na %5.}
+{
+  #var roz %5;
+  #replace {roz} {{, | i | lub }} {;};
+  #list roza create {$roz};
+  #var rozb {{w}{  }{e}{  }{n}{   }{s}{   }{nw}{  }{ne}{  }{se}{  }{sw}{  }};
+  #foreach {$roza[]} {i}
+  {
+    #switch {"$roza[$i]"}
+    {
+      #case {"polnoc"} {#var {rozb[n]} { | }};
+      #case {"polnocny-wschod"} {#var {rozb[ne]} {/ }};
+      #case {"polnocny-zachod"} {#var {rozb[nw]} { \\}};
+      #case {"poludnie"} {#var {rozb[s]} { | }};
+      #case {"poludniowy-wschod"} {#var {rozb[se]} {\\ }};
+      #case {"poludniowy-zachod"} {#var {rozb[sw]} { /}};
+      #case {"wschod"} {#var {rozb[e]} {--}};
+      #case {"zachod"} {#var {rozb[w]} {--}};
+    };
+  };
+  #if {$toggle_roza==1}
+  {
+    #var you {[ ]};
+    #echo {$rozb[nw]$rozb[n]$rozb[ne]};
+    #echo {$rozb[w]$you$rozb[e]};
+    #echo {$rozb[sw]$rozb[s]$rozb[se]};
+  };
+}
+
+
+#ac {W gestych ciemnosciach dostrzegasz trakt wiodacy na %4.}
+{
+  #var roz %4;
+  #replace {roz} {{, | i }} {;};
+  #list roza create {$roz};
+  #var rozb {{w}{  }{e}{  }{n}{  }{s}{  }{nw}{  }{ne}{  }{se}{  }{sw}{  }};
+  #foreach {$roza[]} {i}
+  {
+    #switch {"$roza[$i]"}
+    {
+      #case {"polnoc"} {#var {rozb[n]} { | }};
+      #case {"polnocny-wschod"} {#var {rozb[ne]} {/ }};
+      #case {"polnocny-zachod"} {#var {rozb[nw]} { \\}};
+      #case {"poludnie"} {#var {rozb[s]} { | }};
+      #case {"poludniowy-wschod"} {#var {rozb[se]} {\\ }};
+      #case {"poludniowy-zachod"} {#var {rozb[sw]} { / }};
+      #case {"wschod"} {#var {rozb[e]} {--}};
+      #case {"zachod"} {#var {rozb[w]} {--}};
+    };
+  };
+  #if {$toggle_roza==1}
+  {
+    #var you {[ ]};
+    #echo {$rozb[nw]$rozb[n]$rozb[ne]};
+    #echo {$rozb[w]$you$rozb[e]};
+    #echo {$rozb[sw]$rozb[s]$rozb[se]};
+  };
+}
+
+#ac {Trakt wiedzie na %4.}
+{
+  #var roz %4;
+  #replace {roz} {{, | i }} {;};
+  #list roza create {$roz};
+  #var rozb {{w}{  }{e}{  }{n}{   }{s}{   }{nw}{  }{ne}{  }{se}{  }{sw}{  }};
+  #foreach {$roza[]} {i}
+  {
+    #switch {"$roza[$i]"}
+    {
+      #case {"polnoc"} {#var {rozb[n]} { \x7C }};
+      #case {"polnocny-wschod"} {#var {rozb[ne]} {/ }};
+      #case {"polnocny-zachod"} {#var {rozb[nw]} { \x5C}};
+      #case {"poludnie"} {#var {rozb[s]} { \x7C }};
+      #case {"poludniowy-wschod"} {#var {rozb[se]} {\x5c }};
+      #case {"poludniowy-zachod"} {#var {rozb[sw]} { /}};
+      #case {"wschod"} {#var {rozb[e]} {--}};
+      #case {"zachod"} {#var {rozb[w]} {--}};
+    };
+  };
+  #if {$toggle_roza==1}
+  {
+    #var you {[ ]};
+    #echo {$rozb[nw]$rozb[n]$rozb[ne]};
+    #echo {$rozb[w]$you$rozb[e]};
+    #echo {$rozb[sw]$rozb[s]$rozb[se]};
+  };
+}
+
+#macro {\e[19;5~} 
+{
+  #if {$toggle_roza==1}
+  { 
+    #sh {<030>ROZA WIATROW CTRL+F8 : OFF<088>};
+    #var toggle_roza 0;
+  }; 
+  #else
+  {
+    #sh {<030>ROZA WIATROW CTRL+F8 : ON<088>};
+    #var toggle_roza 1;
+  }
+}
+
