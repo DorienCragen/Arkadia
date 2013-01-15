@@ -1,0 +1,94 @@
+#al {poziomy kochania}
+{
+  #var kochaniep {nikt cie nie kocha, ktos sie w tobie podkochuje, masz wielbiciela, ktos cie uwielbia, ktos cie bardzo uwielbia, ktos jest w tobie zakochany, ktos jest w tobie bardzo zakochany, ktos cie kocha, ktos cie bardzo kocha, ktos kocha cie do szalenstwa};
+  #sh $kochaniep;
+}
+#var kochaniea {{1}{nikt cie nie kocha}{2}{ktos sie w tobie podkochuje}{3}{masz wielbiciela}{4}{ktos cie uwielbia}{5}{ktos cie bardzo uwielbia}{6}{ktos jest w tobie zakochany}{7}{ktos jest w tobie bardzo zakochany}{8}{ktos cie kocha}{9}{ktos cie bardzo kocha}{10}{ktos kocha cie do szalenstwa}};
+#nop ---/3600 ---
+
+#ac {%1 caluje cie %2} 
+{
+  #math kochaniescore {$kochaniescore+1};
+  #math kocha[%1][cnt] {$kocha[%1][cnt]+1};
+}
+
+#ac {%1 obejmuje cie %2} 
+{  
+  #math kochaniescore {$kochaniescore+1};
+  #math kocha[%1][cnt] {$kocha[%1][cnt]+1};
+}
+#ac {%1 przytula cie %2} 
+{  
+  #math kochaniescore {$kochaniescore+1};
+  #math kocha[%1][cnt] {$kocha[%1][cnt]+1};
+}
+#ac {%1 glaszcze cie %2} 
+{  
+  #math kochaniescore {$kochaniescore+1};
+  #math kocha[%1][cnt] {$kocha[%1][cnt]+1};
+}
+#ac {%1 wierzchem dloni dotyka twego policzka %2} 
+{  
+  #math kochaniescore {$kochaniescore+1};
+  #math kocha[%1][cnt] {$kocha[%1][cnt]+1};
+}
+
+#unac {Wiek: %1 {dni|dzien} %2 godzi{n|ny} %3}
+
+#ac {Wiek: %1 {dni|dzien} %3 godzi{na|n|ny} %5} 
+{
+  #var dzien %1;
+  #var godzina %3;
+  #math {Td} {($dzien*24)+$godzina};
+  
+  #if {$kochaniescore>$Td} 
+  {
+    #var kochanie_po 10;
+  };
+  #if {$kochaniescore<=$Td}
+  {
+    #math kochanie_po {((($kochaniescore+0.00)/$Td)*10)+1};
+  };
+  #replace kochanie_po {.} {;};
+  #list koch {create} {$kochanie_po};
+  
+  #sh {Wydaje ci sie ze, $kochaniea[$koch[1]].};
+}
+
+#ac {Wiek: %1 {dni|dzien} %3 minu{t|ta|ty} %5} 
+{
+  #var dzien %1;
+  #math {Td} {($dzien*24)};
+  
+  #if {$kochaniescore>$Td} 
+  {
+    #var kochanie_po 10;
+  };
+  #if {$kochaniescore<=$Td}
+  {
+    #math kochanie_po {((($kochaniescore+0.00)/$Td)*10)+1};
+  };
+  #replace kochanie_po {.} {;};
+  #list koch {create} {$kochanie_po};
+  
+  #sh {Wydaje ci sie, ze $kochaniea[$koch[1]].};
+}
+
+
+#ALIAS {kocha}
+{
+  #showme {     Kto           Jak      };
+	#showme {-------------------------------};
+	#variable total 0;
+	#foreach {$kocha[]} {kk}
+	{
+		#format proc[$kk] %d;
+		#math {proc[$kk]} {(($kocha[$kk][cnt] + 0.00) / $kochaniescore) * 100};
+		#format {line} {%+12s %+10s %+7s} {$kk} {$kocha[$kk][cnt]} {$proc[$kk]};
+		#echo {$line};
+		#math {total} {$total+$kocha[$kk][cnt]}
+	};
+	#showme {-------------------------------};
+	#format {tot} {%+12s %+10s %+7s} {Total:} {$total} {100};
+	#echo {$tot}
+}
