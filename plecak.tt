@@ -1,0 +1,117 @@
+#al plecak
+{
+#nop {otworz plecak;ob plecak;zamknij plecak;};
+zajrzyj do plecaka;
+}
+#gag {Otwart{y|a} %1 zawiera %2.} 
+#action {Otwart{y|a} %1 zawiera %2.} 
+{
+  #var grat %2;
+  #replace grat {{, | i | oraz }} {;};
+  #list graty create {$grat};
+  
+  #list graty {size} {v};
+  #foreach {$graty[]} {tt}
+  {
+    #var gg {$graty[$tt]};
+    #replace gg { } {;};
+    #list ggg create {$gg};
+    
+    #switch {"$ggg[1]"}
+    {
+      #case {"dwa"} {#var ret 2};
+      #case {"dwie"} {#var ret 2};
+      #case {"trzy"} {#var ret 3};
+      #case {"cztery"} {#var ret 4};
+      #case {"piec"} {#var ret 5};
+      #case {"szesc"} {#var ret 6};
+      #case {"siedem"} {#var ret 7};
+      #case {"osiem"} {#var ret 8};
+      #case {"dziewiec"} {#var ret 9};
+      #case {"dziesiec"} {#var ret 10};
+      #case {"jedenascie"} {#var ret 11};
+      #case {"dwanascie"} {#var ret 12};
+      #case {"trzynascie"} {#var ret 13};
+      #case {"czternascie"} {#var ret 14};
+      #case {"pietnascie"} {#var ret 15};
+      #case {"szesnascie"} {#var ret 16};
+      #case {"siedemnascie"} {#var ret 17};
+      #case {"osiemnascie"} {#var ret 18};
+      #case {"dziewietnascie"} {#var ret 19};
+      #case {"dwadziescia"} {#var ret 20};
+      #case {"wiele"} {#var ret {N}};
+      #default {#regexp {$ggg[1]} {%d} {#var ret {&1};}};
+    };
+    
+    #if {$ret>0}
+    {
+      #var {zz} {$ret x $ggg[2] $ggg[3] $ggg[4] $ggg[5]};
+    };
+    #elseif {"$ret"=="N"}
+    {
+      #var {zz} {N x $ggg[2] $ggg[3] $ggg[4] $ggg[5]};
+    };
+    #else
+    {
+      #var {zz} {1 x $graty[$tt]};
+    };
+    #format {line} {%s} {$zz};
+    #sh $line;
+  };
+}
+#gag {Otwierasz na chwile %1, sprawdzajac zawartosc. W srodku dostrzegasz %2};
+#action {Otwierasz na chwile %1, sprawdzajac zawartosc. W srodku dostrzegasz %2} 
+{
+  #var grat %2;
+  #replace grat {{, | i | oraz }} {;};
+  #list graty create {$grat};
+  
+  #list graty {size} {v};
+  #foreach {$graty[]} {tt}
+  {
+    #var gg {$graty[$tt]};
+    #replace gg { } {;};
+    #list ggg create {$gg};
+    
+    #switch {"$ggg[1]"}
+    {
+      #case {"dwa"} {#var ret 2};
+      #case {"dwie"} {#var ret 2};
+      #case {"trzy"} {#var ret 3};
+      #case {"cztery"} {#var ret 4};
+      #case {"piec"} {#var ret 5};
+      #case {"szesc"} {#var ret 6};
+      #case {"siedem"} {#var ret 7};
+      #case {"osiem"} {#var ret 8};
+      #case {"dziewiec"} {#var ret 9};
+      #case {"dziesiec"} {#var ret 10};
+      #case {"jedenascie"} {#var ret 11};
+      #case {"dwanascie"} {#var ret 12};
+      #case {"trzynascie"} {#var ret 13};
+      #case {"czternascie"} {#var ret 14};
+      #case {"pietnascie"} {#var ret 15};
+      #case {"szesnascie"} {#var ret 16};
+      #case {"siedemnascie"} {#var ret 17};
+      #case {"osiemnascie"} {#var ret 18};
+      #case {"dziewietnascie"} {#var ret 19};
+      #case {"dwadziescia"} {#var ret 20};
+      #case {"wiele"} {#var ret {N}};
+      #default {#regexp {$ggg[1]} {%d} {#var ret {&1};}};
+    };
+    
+    #if {$ret>0}
+    {
+      #var {zz} {$ret x $ggg[2] $ggg[3] $ggg[4] $ggg[5]};
+    };
+    #elseif {"$ret"=="N"}
+    {
+      #var {zz} {N x $ggg[2] $ggg[3] $ggg[4] $ggg[5]};
+    };
+    #else
+    {
+      #var {zz} {1 x $graty[$tt]};
+    };
+    #format {line} {%s} {$zz};
+    #sh $line;
+  };
+}

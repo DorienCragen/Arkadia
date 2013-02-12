@@ -1,0 +1,153 @@
+#nop Jest w przyblizeniu szosta wieczorem, czterdziesty pierwszy dzien pory Birke wedlug rachuby czasu Starszego Ludu.
+#nop Belleteyn - Dzien Rozkwitu wedlug rachuby czasu Starszego Ludu.
+
+#action {Jest w przyblizeniu %1 {w nocy|poznym wieczorem|wieczorem|rano|nad ranem|po poludniu|},{ przed wschodem slonca,| po zachodzie slonca,|} %4 wedlug rachuby czasu Starszego}
+{
+
+#var data {%4};
+#replace data {{ dzien pory | - }} {;};
+#list dat create {$data};
+
+#switch {"%1"}
+{
+  #case {"pierwsza"} {#var godzin 1};
+  #case {"druga"} {#var godzin 2};
+  #case {"trzecia"} {#var godzin 3};
+  #case {"czwarta"} {#var godzin 4};
+  #case {"piata"} {#var godzin 5};
+  #case {"szosta"} {#var godzin 6};
+  #case {"siodma"} {#var godzin 7};
+  #case {"osma"} {#var godzin 8};
+  #case {"dziewiata"} {#var godzin 9};
+  #case {"dziesiata"} {#var godzin 10};
+  #case {"jedenasta"} {#var godzin 11};
+  #case {"polnoc"} {#var godzin 12};
+  #case {"poludnie"} {#var godzin 12};
+  #default #var godzin 0;
+};
+#switch {"%2"}
+{
+  #case {"rano"} {#var ppp {AM}};
+  #case {"w nocy"} {#var ppp {AM}};
+  #case {"nad ranem"} {#var ppp {AM}};
+  #case {"poznym wieczorem"} {#var ppp {PM}};
+  #case {"wieczorem"} {#var ppp {PM}};
+  #case {"po poludniu"} {#var ppp {PM}};
+  #default #var pd {PM};
+};
+#switch {"$dat[1]"}
+{
+  #case {"pierwszy"} {#var dzie 1};
+  #case {"drugi"} {#var dzie 2};
+  #case {"trzeci"} {#var dzie 3};
+  #case {"czwarty"} {#var dzie 4};
+  #case {"piaty"} {#var dzie 5};
+  #case {"szosty"} {#var dzie 6};
+  #case {"siodmy"} {#var dzie 7};
+  #case {"osmy"} {#var dzie 8};
+  #case {"dziewiaty"} {#var dzie 9};
+  #case {"dziesiaty"} {#var dzie 10};
+  #case {"jedenasty"} {#var dzie 11};
+  #case {"dwunasty"} {#var dzie 12};
+  #case {"trzynasty"} {#var dzie 13};
+  #case {"czternesty"} {#var dzie 14};
+  #case {"pietnasty"} {#var dzie 15};
+  #case {"szesnasty"} {#var dzie 16};
+  #case {"siedemnasty"} {#var dzie 17};
+  #case {"osiemnasty"} {#var dzie 18};
+  #case {"dziewietnasty"} {#var dzie 19};
+  #case {"dwudziesty"} {#var dzie 20};
+  #case {"dwudziesty pierwszy"} {#var dzie 21};
+  #case {"dwudziesty drugi"} {#var dzie 22};
+  #case {"dwudziesty trzeci"} {#var dzie 23};
+  #case {"dwudziesty czwarty"} {#var dzie 24};
+  #case {"dwudziesty piaty"} {#var dzie 25};
+  #case {"dwudziesty szosty"} {#var dzie 26};
+  #case {"dwudziesty siodmy"} {#var dzie 27};
+  #case {"dwudziesty osmy"} {#var dzie 28};
+  #case {"dwudziesty dziewiaty"} {#var dzie 29};
+  #case {"trzydziesty"} {#var dzie 30};
+  #case {"trzydziesty pierwszy"} {#var dzie 31};
+  #case {"trzydziesty drugi"} {#var dzie 32};
+  #case {"trzydziesty trzeci"} {#var dzie 33};
+  #case {"trzydziesty czwarty"} {#var dzie 34};
+  #case {"trzydziesty piaty"} {#var dzie 35};
+  #case {"trzydziesty szosty"} {#var dzie 36};
+  #case {"trzydziesty siodmy"} {#var dzie 37};
+  #case {"trzydziesty osmy"} {#var dzie 38};
+  #case {"trzydziesty dziewiaty"} {#var dzie 39};
+  #case {"czterdziesty"} {#var dzie 40};
+  #case {"czterdziesty pierwszy"} {#var dzie 41};
+  #case {"czterdziesty drugi"} {#var dzie 42};
+  #case {"czterdziesty trzeci"} {#var dzie 43};
+  #case {"czterdziesty czwarty"} {#var dzie 44};
+  #case {"czterdziesty piaty"} {#var dzie 45};
+  #case {"czterdziesty szosty"} {#var dzie 46};
+  #case {"czterdziesty siodmy"} {#var dzie 47};
+  #case {"czterdziesty osmy"} {#var dzie 48};
+  #case {"czterdziesty dziewiaty"} {#var dzie 49};
+
+};
+#switch {"$dat[2]"}
+{
+    #case {"Yule"} {#var pora {Zima};#var rm {I};#var dni 45};
+    #case {"Imbaelk"} {#var pora {Przedwiosnie};#var rm {II};#var dni 45};
+    #case {"Birke"} {#var pora {Wczesna Wiosna};#var rm {III};#var dni 45};
+    #case {"Blathe"} {#var pora {Pozna Wiosna};#var rm {IV};#var dni 45};
+    #case {"Feainn"} {#var pora {Poczatek Lata};#var rm {V};#var dni 45};
+    #case {"Lammas"} {#var pora {Koniec Lata};#var rm {VI};#var dni 45};
+    #case {"Velen"} {#var pora {Zlota Jesien};#var rm {VII};#var dni 45};
+    #case {"Saovine"} {#var pora {Pozna Jesien};#var rm {VIII};#var dni 45};
+};
+#var month {{1}{Yule}{2}{Imbaelk}{3}{Birke}{4}{Blathe}{5}{Feainn}{6}{Velen}{7}{Saovine}};
+#tick {czas} 
+{
+  #if {$godzin>11} 
+  {
+    #var godzin 1;
+    #if {"$ppp"=="AM"} 
+    {
+      #var ppp {PM};
+    };
+    #else 
+    {
+      #var ppp {AM};
+      #math {dzie} {$dzie+1};
+      #if {$dzie>$dni}
+      {
+        #var dzie 1;
+        #list month find {$dat[2]} {v};
+        #math v {$v+1};
+        #var {dat[2]} {$month[$v]};
+      };
+      #format {nowyd} {%h} {$godzin $ppp, $dzie $rm $dat[2], $pora};
+      #replace nowyd {#} {-};
+      #echo $nowyd
+    };
+  };
+  #elseif {$godzin<=12} 
+  {
+    #math godzin {$godzin+1};
+  };
+  #nop sh <030>$godzin $ppp, $dzie $rm $dat[2], $pora<088>;
+  #var curtime {$godzin $ppp, $dzie $rm $dat[2], $pora};
+  #format {bot} {%h} {$curtime};
+  #replace bot {#} {-};
+  #echo {{%s} {1}} {$bot};
+} {120};
+
+#sh <030>Zegar Ustawiony<088>;
+#var curtime {$godzin $ppp, $dzie $rm $dat[2], $pora};
+#format {bot} {%h} {$curtime};
+#replace bot {#} {-};
+#echo {{%s} {1}} {$bot};
+}
+
+#al dc {#untick {czas};#sh <030>zegar wylaczony<088>;#var bot {};#split}
+
+#event {SCREEN RESIZE} 
+{
+  #format {bot} {%h} {$curtime};
+  #replace bot {#} {-};
+  #echo {{%s} {1}} {$bot};
+}
